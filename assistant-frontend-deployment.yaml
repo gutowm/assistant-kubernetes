@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: assistant-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assistant-frontend
+  template:
+    metadata:
+      labels:
+        app: assistant-frontend
+    spec:
+      containers:
+        - name: nextjs
+          image: gutowm/assistant-frontend:latest
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: assistant-frontend-service
+spec:
+  selector:
+    app: assistant-frontend
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
