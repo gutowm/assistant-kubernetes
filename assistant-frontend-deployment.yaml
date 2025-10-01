@@ -15,6 +15,12 @@ spec:
       containers:
         - name: nextjs
           image: gutowm/assistant-frontend:latest
+          env:
+          - name: BACKEND_URL
+            valueFrom:
+            configMapKeyRef:
+              name: assistant-config
+              key: BACKEND_URL
           ports:
             - containerPort: 3000
 ---
