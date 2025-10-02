@@ -18,9 +18,9 @@ spec:
           env:
           - name: BACKEND_URL
             valueFrom:
-            configMapKeyRef:
-              name: assistant-config
-              key: BACKEND_URL
+              configMapKeyRef:
+                name: assistant-config
+                key: BACKEND_URL
           ports:
             - containerPort: 3000
 ---
